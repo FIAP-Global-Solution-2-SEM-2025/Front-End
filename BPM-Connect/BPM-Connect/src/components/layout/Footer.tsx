@@ -1,3 +1,6 @@
+// src/components/layout/Footer.tsx
+import { Button } from '../ui/Button'
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
@@ -52,6 +55,9 @@ export default function Footer() {
                   placeholder="Seu e-mail"
                   className="px-3 py-2 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
+                <Button size="sm" className="w-full">
+                  Inscrever
+                </Button>
               </div>
             </div>
           </div>

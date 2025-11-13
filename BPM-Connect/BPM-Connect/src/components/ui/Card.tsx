@@ -1,0 +1,95 @@
+import { ReactNode } from 'react'
+
+interface CardProps {
+  children: ReactNode
+  className?: string
+  hover?: boolean
+  padding?: 'none' | 'sm' | 'md' | 'lg'
+  shadow?: 'none' | 'sm' | 'md' | 'lg'
+  border?: boolean
+  onClick?: () => void
+}
+
+export const Card = ({ 
+  children, 
+  className = "", 
+  hover = false,
+  padding = 'md',
+  shadow = 'md',
+  border = true,
+  onClick
+}: CardProps) => {
+  const paddingStyles = {
+    none: '',
+    sm: 'p-4',
+    md: 'p-6',
+    lg: 'p-8'
+  }
+
+  const shadowStyles = {
+    none: '',
+    sm: 'shadow-sm',
+    md: 'shadow-md',
+    lg: 'shadow-lg'
+  }
+
+  const baseStyle = `
+    bg-white rounded-xl
+    ${paddingStyles[padding]}
+    ${shadowStyles[shadow]}
+    ${border ? 'border border-gray-100' : ''}
+    ${hover ? 'hover:shadow-lg transition-shadow cursor-pointer transform hover:-translate-y-0.5 transition-transform' : ''}
+    ${onClick ? 'cursor-pointer' : ''}
+  `
+
+  return (
+    <div 
+      className={`${baseStyle} ${className}`}
+      onClick={onClick}
+    >
+      {children}
+    </div>
+  )
+}
+
+// Componente CardHeader para títulos
+interface CardHeaderProps {
+  children: ReactNode
+  className?: string
+}
+
+export const CardHeader = ({ children, className = "" }: CardHeaderProps) => {
+  return (
+    <div className={`mb-4 ${className}`}>
+      {children}
+    </div>
+  )
+}
+
+// Componente CardContent para conteúdo principal
+interface CardContentProps {
+  children: ReactNode
+  className?: string
+}
+
+export const CardContent = ({ children, className = "" }: CardContentProps) => {
+  return (
+    <div className={className}>
+      {children}
+    </div>
+  )
+}
+
+// Componente CardFooter para ações
+interface CardFooterProps {
+  children: ReactNode
+  className?: string
+}
+
+export const CardFooter = ({ children, className = "" }: CardFooterProps) => {
+  return (
+    <div className={`mt-6 pt-4 border-t border-gray-100 ${className}`}>
+      {children}
+    </div>
+  )
+}
