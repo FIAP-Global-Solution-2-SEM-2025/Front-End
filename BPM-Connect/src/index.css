@@ -1,11 +1,1 @@
-PS C:\Users\GAMER\OneDrive\Desktop\Front-End\BPM-Connect\BPM-Connect> npm install -D tailwindcss postcss autoprefixer
-
-removed 4 packages, and audited 208 packages in 7s
-
-31 packages are looking for funding
-  run `npm fund` for details
-
-found 0 vulnerabilities
-PS C:\Users\GAMER\OneDrive\Desktop\Front-End\BPM-Connect\BPM-Connect> npx tailwindcss init -p
-npm error could not determine executable to run
-npm error A complete log of this run can be found in: C:\Users\GAMER\AppData\Local\npm-cache\_logs\2025-11-13T23_14_05_618Z-debug-0.log
+@import "tailwindcss";
