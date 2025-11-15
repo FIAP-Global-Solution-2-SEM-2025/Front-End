@@ -1,11 +1,18 @@
-// src/components/layout/Header.tsx - VERSÃO COM ITEM SELECIONADO FORTE
+// src/components/layout/Header.tsx
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "../theme/ThemeProvider";
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
   const [open, setOpen] = useState(false);
+  const location = useLocation(); // Hook para pegar a rota atual
+
+  // Função para verificar se o link está ativo
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
 
   return (
     <nav className="header-iphone fixed top-0 left-0 w-full z-50">
@@ -13,21 +20,21 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
 
           {/* LOGO */}
-          <div className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
               <span className="font-bold text-white">BP</span>
             </div>
             <h1 className="text-xl font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               BPM Connect
             </h1>
-          </div>
+          </Link>
 
           {/* MENU DESKTOP */}
           <div className="hidden md:flex items-center space-x-2">
-            <NavItem href="/">Início</NavItem>
-            <NavItem href="/vagas" active>Vagas</NavItem>
-            <NavItem href="/candidatos">Candidatos</NavItem>
-            <NavItem href="/processos">Processos</NavItem>
+            <NavItem href="/" active={isActive('/')}>Início</NavItem>
+            <NavItem href="/vagas" active={isActive('/vagas')}>Vagas</NavItem>
+            <NavItem href="/candidatos" active={isActive('/candidatos')}>Candidatos</NavItem>
+            <NavItem href="/processos" active={isActive('/processos')}>Processos</NavItem>
           </div>
 
           {/* AÇÕES */}
@@ -66,10 +73,10 @@ export default function Header() {
         {/* MENU MOBILE */}
         {open && (
           <div className="md:hidden flex flex-col py-4 space-y-2 bg-header rounded-2xl mt-2 p-4">
-            <MobileItem href="/">Início</MobileItem>
-            <MobileItem href="/vagas" active>Vagas</MobileItem>
-            <MobileItem href="/candidatos">Candidatos</MobileItem>
-            <MobileItem href="/processos">Processos</MobileItem>
+            <MobileItem href="/" active={isActive('/')}>Início</MobileItem>
+            <MobileItem href="/vagas" active={isActive('/vagas')}>Vagas</MobileItem>
+            <MobileItem href="/candidatos" active={isActive('/candidatos')}>Candidatos</MobileItem>
+            <MobileItem href="/processos" active={isActive('/processos')}>Processos</MobileItem>
 
             <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-3 rounded-full hover:from-blue-700 hover:to-purple-700 transition-all mt-4">
               Entrar
@@ -81,10 +88,14 @@ export default function Header() {
   );
 }
 
-function NavItem({ href, children, active = false }) {
+function NavItem({ href, children, active = false }: { 
+  href: string; 
+  children: React.ReactNode; 
+  active?: boolean; 
+}) {
   return (
-    <a
-      href={href}
+    <Link
+      to={href}
       className={`
         transition-all font-medium px-4 py-2 rounded-full text-sm
         ${active 
@@ -92,16 +103,21 @@ function NavItem({ href, children, active = false }) {
           : "hover:bg-black/10 dark:hover:bg-white/10"
         }
       `}
+      onClick={() => window.scrollTo(0, 0)}
     >
       {children}
-    </a>
+    </Link>
   );
 }
 
-function MobileItem({ href, children, active = false }) {
+function MobileItem({ href, children, active = false }: { 
+  href: string; 
+  children: React.ReactNode; 
+  active?: boolean; 
+}) {
   return (
-    <a
-      href={href}
+    <Link
+      to={href}
       className={`
         transition-all px-4 py-3 rounded-xl text-base
         ${active 
@@ -109,8 +125,25 @@ function MobileItem({ href, children, active = false }) {
           : "hover:bg-black/10 dark:hover:bg-white/10"
         }
       `}
+      onClick={() => {
+        window.scrollTo(0, 0);
+        // Fechar menu mobile após clique
+        const event = new CustomEvent('closeMobileMenu');
+        window.dispatchEvent(event);
+      }}
     >
       {children}
-    </a>
+    </Link>
   );
+}
+
+// Adicionar event listener para fechar menu mobile
+if (typeof window !== 'undefined') {
+  window.addEventListener('closeMobileMenu', () => {
+    // Fechar menu mobile quando um link for clicado
+    const mobileMenu = document.querySelector('[class*="md:hidden"]');
+    if (mobileMenu) {
+      // Você pode adicionar lógica para fechar o menu aqui se necessário
+    }
+  });
 }

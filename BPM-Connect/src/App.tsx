@@ -1,4 +1,3 @@
-// src/App.tsx
 import { Layout } from "./components/layout/Layout";
 import { VagaCard } from "./components/rh/VagaCard";
 import { Vaga } from "./types/rh";
