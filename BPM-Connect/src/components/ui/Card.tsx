@@ -35,10 +35,10 @@ export const Card = ({
   }
 
   const baseStyle = `
-    bg-white dark:bg-gray-800 rounded-xl
+    rounded-xl card-consistent /* TROQUEI card-differential por card-consistent */
     ${paddingStyles[padding]}
     ${shadowStyles[shadow]}
-    ${border ? 'border border-gray-200 dark:border-gray-700' : ''}
+    ${border ? 'border' : ''}
     ${hover ? 'hover:shadow-lg transition-shadow cursor-pointer' : ''}
     ${onClick ? 'cursor-pointer' : ''}
   `
@@ -59,5 +59,5 @@ export const CardContent = ({ children, className = "" }: { children: ReactNode;
 }
 
 export const CardFooter = ({ children, className = "" }: { children: ReactNode; className?: string }) => {
-  return <div className={`mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 ${className}`}>{children}</div>
+  return <div className={`mt-6 pt-4 border-t ${className}`}>{children}</div>
 }

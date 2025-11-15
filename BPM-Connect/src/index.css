@@ -22,47 +22,71 @@
   background-color: #f8fafc !important;
 }
 
-/* ITEM SELECIONADO NO HEADER - MAIS FORTE NO LIGHT MODE */
+/* CORREÇÃO: CARDS NO LIGHT MODE - REGRA MAIS ESPECÍFICA */
+.light .card-consistent,
+.light .card-consistent * {
+  background-color: #f8fafc !important; /* Cinza claro */
+}
+
+.light .card-consistent {
+  color: #000000 !important; /* Texto preto no card */
+}
+
+/* ITEM SELECIONADO NO HEADER */
 .light .nav-item-active {
-  background-color: #3b82f6 !important; /* Azul forte */
+  background-color: #3b82f6 !important;
   color: white !important;
   font-weight: 600 !important;
+  border: 1px solid #3b82f6 !important;
 }
 
 .light .nav-item-active:hover {
-  background-color: #2563eb !important; /* Azul mais escuro no hover */
+  background-color: #2563eb !important;
   color: white !important;
+  border: 1px solid #2563eb !important;
 }
 
 /* TAGS MAIS FORTES NO LIGHT MODE */
+.light .tag-blue,
+.light .tag-green, 
+.light .tag-purple,
+.light .tag-orange,
+.light .tag-gray {
+  padding: 6px 12px !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  min-height: 24px !important;
+  border: 1px solid !important;
+}
+
 .light .tag-blue {
   background-color: #3b82f6 !important;
   color: white !important;
-  border: none !important;
+  border-color: #3b82f6 !important;
 }
 
 .light .tag-green {
   background-color: #10b981 !important;
   color: white !important;
-  border: none !important;
+  border-color: #10b981 !important;
 }
 
 .light .tag-purple {
   background-color: #8b5cf6 !important;
   color: white !important;
-  border: none !important;
+  border-color: #8b5cf6 !important;
 }
 
 .light .tag-orange {
   background-color: #f59e0b !important;
   color: white !important;
-  border: none !important;
+  border-color: #f59e0b !important;
 }
 
 .light .tag-gray {
   background-color: #6b7280 !important;
   color: white !important;
-  border: none !important;
+  border-color: #6b7280 !important;
 }
 
 /* TEMA ESCURO */
@@ -87,9 +111,19 @@
   background-color: #1e293b !important;
 }
 
-/* ITEM SELECIONADO NO HEADER - MAIS FORTE NO DARK MODE */
+/* CARDS NO DARK MODE - REGRA MAIS ESPECÍFICA */
+.dark .card-consistent,
+.dark .card-consistent * {
+  background-color: #1e293b !important; /* Azul escuro */
+}
+
+.dark .card-consistent {
+  color: #f8fafc !important; /* Texto branco no card */
+}
+
+/* ITEM SELECIONADO NO HEADER */
 .dark .nav-item-active {
-  background-color: rgba(59, 130, 246, 0.3) !important; /* Azul mais forte */
+  background-color: rgba(59, 130, 246, 0.3) !important;
   color: #93c5fd !important;
   font-weight: 600 !important;
   border: 1px solid rgba(59, 130, 246, 0.5) !important;
@@ -100,34 +134,47 @@
   color: #bfdbfe !important;
 }
 
+/* TAGS NO DARK MODE */
+.dark .tag-blue,
+.dark .tag-green,
+.dark .tag-purple,
+.dark .tag-orange,
+.dark .tag-gray {
+  padding: 6px 12px !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  min-height: 24px !important;
+  border: 1px solid !important;
+}
+
 .dark .tag-blue {
   background-color: rgba(59, 130, 246, 0.2) !important;
   color: #93c5fd !important;
-  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
 }
 
 .dark .tag-green {
   background-color: rgba(16, 185, 129, 0.2) !important;
   color: #6ee7b7 !important;
-  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
 }
 
 .dark .tag-purple {
   background-color: rgba(139, 92, 246, 0.2) !important;
   color: #c4b5fd !important;
-  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+  border-color: rgba(139, 92, 246, 0.3) !important;
 }
 
 .dark .tag-orange {
   background-color: rgba(245, 158, 11, 0.2) !important;
   color: #fcd34d !important;
-  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
 }
 
 .dark .tag-gray {
   background-color: rgba(107, 114, 128, 0.2) !important;
   color: #d1d5db !important;
-  border: 1px solid rgba(107, 114, 128, 0.3) !important;
+  border-color: rgba(107, 114, 128, 0.3) !important;
 }
 
 /* HEADER COM BLUR ESTILO IPHONE */
@@ -145,33 +192,58 @@
   background-color: rgba(15, 23, 42, 0.7) !important;
 }
 
-/* CARDS COM COR DIFERENCIADA */
-.card-differential {
-  border: 1px solid;
-  border-radius: 16px !important;
+/* CARDS COM TAMANHO CONSISTENTE */
+.card-consistent {
+  min-height: 280px !important;
+  padding: 24px !important;
+  border: 1px solid !important;
 }
 
-.light .card-differential {
-  background-color: #f8fafc !important;
+.light .card-consistent {
   border-color: #e2e8f0 !important;
 }
 
-.dark .card-differential {
-  background-color: #1e293b !important;
+.dark .card-consistent {
   border-color: #334155 !important;
 }
 
 /* FOOTER ESTILO */
 footer {
-  border-top: 1px solid;
+  border-top: 1px solid !important;
 }
 
 .light footer {
   border-color: #e2e8f0 !important;
+  background-color: #f8fafc !important;
 }
 
 .dark footer {
   border-color: #334155 !important;
+  background-color: #1e293b !important;
+}
+
+/* ESPAÇAMENTO ENTRE REQUISITOS */
+.requisitos-grid {
+  gap: 8px !important;
+}
+
+.requisito-tag {
+  padding: 4px 8px !important;
+  font-size: 11px !important;
+  min-height: 20px !important;
+  border: 1px solid !important;
+}
+
+.light .requisito-tag {
+  background-color: #6b7280 !important;
+  color: white !important;
+  border-color: #6b7280 !important;
+}
+
+.dark .requisito-tag {
+  background-color: rgba(107, 114, 128, 0.2) !important;
+  color: #d1d5db !important;
+  border-color: rgba(107, 114, 128, 0.3) !important;
 }
 
 /* Transições suaves */
