@@ -1,1 +1,164 @@
 @import "tailwindcss";
+
+/* TEMA CLARO */
+.light {
+  color-scheme: light;
+}
+
+.light body {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.light .bg-card {
+  background-color: #f8fafc !important;
+}
+
+.light main {
+  background-color: #ffffff !important;
+}
+
+.light footer {
+  background-color: #f8fafc !important;
+}
+
+/* TAGS MAIS FORTES NO LIGHT MODE */
+.light .tag-blue {
+  background-color: #3b82f6 !important; /* Azul forte */
+  color: white !important;
+  border: none !important;
+}
+
+.light .tag-green {
+  background-color: #10b981 !important; /* Verde forte */
+  color: white !important;
+  border: none !important;
+}
+
+.light .tag-purple {
+  background-color: #8b5cf6 !important; /* Roxo forte */
+  color: white !important;
+  border: none !important;
+}
+
+.light .tag-orange {
+  background-color: #f59e0b !important; /* Laranja forte */
+  color: white !important;
+  border: none !important;
+}
+
+.light .tag-gray {
+  background-color: #6b7280 !important; /* Cinza forte */
+  color: white !important;
+  border: none !important;
+}
+
+/* TEMA ESCURO (mantemos as cores suaves) */
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+.dark .bg-card {
+  background-color: #1e293b !important;
+}
+
+.dark main {
+  background-color: #0f172a !important;
+}
+
+.dark footer {
+  background-color: #1e293b !important;
+}
+
+.dark .tag-blue {
+  background-color: rgba(59, 130, 246, 0.2) !important;
+  color: #93c5fd !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+
+.dark .tag-green {
+  background-color: rgba(16, 185, 129, 0.2) !important;
+  color: #6ee7b7 !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+}
+
+.dark .tag-purple {
+  background-color: rgba(139, 92, 246, 0.2) !important;
+  color: #c4b5fd !important;
+  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+}
+
+.dark .tag-orange {
+  background-color: rgba(245, 158, 11, 0.2) !important;
+  color: #fcd34d !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+}
+
+.dark .tag-gray {
+  background-color: rgba(107, 114, 128, 0.2) !important;
+  color: #d1d5db !important;
+  border: 1px solid rgba(107, 114, 128, 0.3) !important;
+}
+
+/* HEADER COM BLUR ESTILO IPHONE */
+.header-iphone {
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.light .header-iphone {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark .header-iphone {
+  background-color: rgba(15, 23, 42, 0.7) !important;
+}
+
+/* CARDS COM COR DIFERENCIADA */
+.card-differential {
+  border: 1px solid;
+  border-radius: 16px !important;
+}
+
+.light .card-differential {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+.dark .card-differential {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+/* FOOTER ESTILO */
+footer {
+  border-top: 1px solid;
+}
+
+.light footer {
+  border-color: #e2e8f0 !important;
+}
+
+.dark footer {
+  border-color: #334155 !important;
+}
+
+/* Transições suaves */
+* {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease,
+              backdrop-filter 0.3s ease !important;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

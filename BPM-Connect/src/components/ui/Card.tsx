@@ -1,3 +1,4 @@
+// src/components/ui/Card.tsx - VERSÃO CORRIGIDA
 import { ReactNode } from 'react'
 
 interface CardProps {
@@ -34,62 +35,29 @@ export const Card = ({
   }
 
   const baseStyle = `
-    bg-white rounded-xl
+    bg-white dark:bg-gray-800 rounded-xl
     ${paddingStyles[padding]}
     ${shadowStyles[shadow]}
-    ${border ? 'border border-gray-100' : ''}
-    ${hover ? 'hover:shadow-lg transition-shadow cursor-pointer transform hover:-translate-y-0.5 transition-transform' : ''}
+    ${border ? 'border border-gray-200 dark:border-gray-700' : ''}
+    ${hover ? 'hover:shadow-lg transition-shadow cursor-pointer' : ''}
     ${onClick ? 'cursor-pointer' : ''}
   `
 
   return (
-    <div 
-      className={`${baseStyle} ${className}`}
-      onClick={onClick}
-    >
+    <div className={`${baseStyle} ${className}`} onClick={onClick}>
       {children}
     </div>
   )
 }
 
-// Componente CardHeader para títulos
-interface CardHeaderProps {
-  children: ReactNode
-  className?: string
+export const CardHeader = ({ children, className = "" }: { children: ReactNode; className?: string }) => {
+  return <div className={`mb-4 ${className}`}>{children}</div>
 }
 
-export const CardHeader = ({ children, className = "" }: CardHeaderProps) => {
-  return (
-    <div className={`mb-4 ${className}`}>
-      {children}
-    </div>
-  )
+export const CardContent = ({ children, className = "" }: { children: ReactNode; className?: string }) => {
+  return <div className={className}>{children}</div>
 }
 
-// Componente CardContent para conteúdo principal
-interface CardContentProps {
-  children: ReactNode
-  className?: string
-}
-
-export const CardContent = ({ children, className = "" }: CardContentProps) => {
-  return (
-    <div className={className}>
-      {children}
-    </div>
-  )
-}
-
-// Componente CardFooter para ações
-interface CardFooterProps {
-  children: ReactNode
-  className?: string
-}
-
-export const CardFooter = ({ children, className = "" }: CardFooterProps) => {
-  return (
-    <div className={`mt-6 pt-4 border-t border-gray-100 ${className}`}>
-      {children}
-    </div>
-  )
+export const CardFooter = ({ children, className = "" }: { children: ReactNode; className?: string }) => {
+  return <div className={`mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 ${className}`}>{children}</div>
 }
