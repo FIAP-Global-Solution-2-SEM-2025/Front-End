@@ -1,49 +1,43 @@
 export default function Footer() {
-  const year = new Date().getFullYear();
-
   return (
-    <footer className="bg-gray-100 dark:bg-black text-gray-800 dark:text-gray-200 mt-16">
-      <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
-
-        {/* LOGO E DESCRIÇÃO */}
-        <div className="md:col-span-2">
-          <h2 className="text-2xl font-bold mb-4">BPM Connect RH</h2>
-          <p className="max-w-md">
-            Conectando talentos excepcionais com oportunidades incríveis.
-          </p>
+    <footer className="bg-white dark:bg-[#111] border-t border-gray-200 dark:border-gray-800 mt-10">
+      <div className="max-w-6xl mx-auto py-8 px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+        
+        {/* Logo e nome */}
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-blue-600 dark:bg-blue-500 rounded-lg" />
+          <span className="text-lg font-semibold text-gray-900 dark:text-white">
+            BPM Connect
+          </span>
         </div>
 
-        {/* LINKS */}
-        <div>
-          <h3 className="font-semibold mb-4">Links Rápidos</h3>
-          <div className="flex flex-col space-y-2">
-            <FooterLink href="/vagas">Vagas Abertas</FooterLink>
-            <FooterLink href="/sobre">Sobre Nós</FooterLink>
-            <FooterLink href="/contato">Contato</FooterLink>
-            <FooterLink href="/blog">Blog</FooterLink>
-          </div>
-        </div>
+        {/* Links */}
+        <nav className="flex gap-6 text-sm">
+          <a
+            href="#"
+            className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
+          >
+            Sobre
+          </a>
+          <a
+            href="#"
+            className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
+          >
+            Contato
+          </a>
+          <a
+            href="#"
+            className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
+          >
+            Trabalhe Conosco
+          </a>
+        </nav>
 
-        {/* CONTATO */}
-        <div>
-          <h3 className="font-semibold mb-4">Contato</h3>
-          <p>📧 contato@bpmconnect.com</p>
-          <p>📞 (11) 9999-9999</p>
-          <p>📍 São Paulo, SP</p>
-        </div>
-      </div>
-
-      <div className="border-t border-gray-300 dark:border-gray-700 py-6 text-center">
-        © {year} BPM Connect RH — Todos os direitos reservados.
+        {/* Direitos autorais */}
+        <p className="text-xs text-gray-500 dark:text-gray-400">
+          © {new Date().getFullYear()} BPM Connect — Todos os direitos reservados.
+        </p>
       </div>
     </footer>
-  );
-}
-
-function FooterLink({ href, children }) {
-  return (
-    <a href={href} className="hover:underline text-gray-800 dark:text-gray-300">
-      {children}
-    </a>
   );
 }
