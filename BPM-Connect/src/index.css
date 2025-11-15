@@ -22,38 +22,50 @@
   background-color: #f8fafc !important;
 }
 
+/* ITEM SELECIONADO NO HEADER - MAIS FORTE NO LIGHT MODE */
+.light .nav-item-active {
+  background-color: #3b82f6 !important; /* Azul forte */
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.light .nav-item-active:hover {
+  background-color: #2563eb !important; /* Azul mais escuro no hover */
+  color: white !important;
+}
+
 /* TAGS MAIS FORTES NO LIGHT MODE */
 .light .tag-blue {
-  background-color: #3b82f6 !important; /* Azul forte */
+  background-color: #3b82f6 !important;
   color: white !important;
   border: none !important;
 }
 
 .light .tag-green {
-  background-color: #10b981 !important; /* Verde forte */
+  background-color: #10b981 !important;
   color: white !important;
   border: none !important;
 }
 
 .light .tag-purple {
-  background-color: #8b5cf6 !important; /* Roxo forte */
+  background-color: #8b5cf6 !important;
   color: white !important;
   border: none !important;
 }
 
 .light .tag-orange {
-  background-color: #f59e0b !important; /* Laranja forte */
+  background-color: #f59e0b !important;
   color: white !important;
   border: none !important;
 }
 
 .light .tag-gray {
-  background-color: #6b7280 !important; /* Cinza forte */
+  background-color: #6b7280 !important;
   color: white !important;
   border: none !important;
 }
 
-/* TEMA ESCURO (mantemos as cores suaves) */
+/* TEMA ESCURO */
 .dark {
   color-scheme: dark;
 }
@@ -73,6 +85,19 @@
 
 .dark footer {
   background-color: #1e293b !important;
+}
+
+/* ITEM SELECIONADO NO HEADER - MAIS FORTE NO DARK MODE */
+.dark .nav-item-active {
+  background-color: rgba(59, 130, 246, 0.3) !important; /* Azul mais forte */
+  color: #93c5fd !important;
+  font-weight: 600 !important;
+  border: 1px solid rgba(59, 130, 246, 0.5) !important;
+}
+
+.dark .nav-item-active:hover {
+  background-color: rgba(59, 130, 246, 0.4) !important;
+  color: #bfdbfe !important;
 }
 
 .dark .tag-blue {
