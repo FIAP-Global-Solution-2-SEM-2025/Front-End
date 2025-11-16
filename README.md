@@ -123,17 +123,29 @@ Roteamento & UX
 
 🏗 Arquitetura do Projeto
 bpm-connect/
+
 ├── src/
+
 │   ├── components/          # Componentes 
+
 │   │   ├── layout/         # Header, Footer, Layout
+
 │   │   ├── ui/             # Botões, Cards, etc.
+
 │   │   └── theme/          # Sistema de temas
+
 │   ├── routes/             # Páginas da aplicação
+
 │   │   ├── Home.tsx        # Landing page
+
 │   │   └── [em desenvolvimento]/
+
 │   ├── types/              # Definições TypeScript
+
 │   └── assets/             # Recursos estáticos
+
 ├── public/                 # Arquivos públicos
+
 └── configurações/          # Vite, Tailwind, etc.
 
 
