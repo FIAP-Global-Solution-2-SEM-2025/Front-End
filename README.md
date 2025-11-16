@@ -49,7 +49,7 @@ Este projeto é uma **plataforma moderna de recrutamento especializada em Busine
 
 1. **Clone o repositório**
    ```bash
-   git clone https://github.com/Bruno-A-Z/bpm-connect.git
+   git clone https://github.com/FIAP-Global-Solution-2-SEM-2025/Front-End.git
 Entre no diretório
 
 bash
@@ -124,7 +124,7 @@ Roteamento & UX
 🏗 Arquitetura do Projeto
 bpm-connect/
 ├── src/
-│   ├── components/          # Componentes reutilizáveis
+│   ├── components/          # Componentes 
 │   │   ├── layout/         # Header, Footer, Layout
 │   │   ├── ui/             # Botões, Cards, etc.
 │   │   └── theme/          # Sistema de temas
@@ -135,6 +135,7 @@ bpm-connect/
 │   └── assets/             # Recursos estáticos
 ├── public/                 # Arquivos públicos
 └── configurações/          # Vite, Tailwind, etc.
+
 
 🎯 Próximos Passos
 🚧 Em Desenvolvimento
