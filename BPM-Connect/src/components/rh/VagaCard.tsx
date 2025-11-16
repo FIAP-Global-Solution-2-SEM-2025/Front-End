@@ -1,4 +1,3 @@
-// src/components/rh/VagaCard.tsx
 import { Vaga } from '../../types/rh'
 import { Card, CardContent } from '../ui/Card'
 import { Button } from '../ui/Button'
@@ -25,7 +24,7 @@ export const VagaCard = ({
   return (
     <Card hover={true} className="mb-4 card-consistent">
       <CardContent className="p-4 sm:p-6">
-        {/* Cabeçalho com título e ações - Stack no mobile */}
+        {/* Cabeçalho com título e ações*/}
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-3">
           <div className="flex-1">
             <h3 className="text-lg sm:text-xl font-bold hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors line-clamp-2">
@@ -49,7 +48,7 @@ export const VagaCard = ({
           )}
         </div>
 
-        {/* Tags e badges - Wrap melhor no mobile */}
+        {/* Tags e badges*/}
         <div className="flex flex-wrap gap-1 sm:gap-2 mb-4">
           <span className="tag-blue text-xs font-medium px-2 sm:px-3 py-1 rounded-full">
             {vaga.tipo}
@@ -87,7 +86,7 @@ export const VagaCard = ({
           </div>
         </div>
 
-        {/* Rodapé com ações e metadata - Stack no mobile */}
+        {/* Rodapé com ações */}
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center pt-4 border-t border-opacity-20 gap-3">
           {/* Metadata */}
           <div className="flex items-center text-xs sm:text-sm opacity-70 flex-wrap gap-1">

@@ -22,7 +22,7 @@
   background-color: #f8fafc !important;
 }
 
-/* CARDS NO LIGHT MODE */
+/* CARDS LIGHT MODE */
 .light .card-consistent,
 .light .card-consistent *:not(.tag-blue):not(.tag-green):not(.tag-purple):not(.tag-orange):not(.tag-gray) {
   background-color: #f8fafc !important;
@@ -186,6 +186,49 @@
   background-color: rgba(15, 23, 42, 0.7) !important;
 }
 
+/* MENU MOBILE*/
+.mobile-menu-container {
+  background-color: white !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+}
+
+.dark .mobile-menu-container {
+  background-color: #111827 !important;
+  border-bottom-color: #374151 !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3) !important;
+}
+
+/* ITENS DO MENU MOBILE */
+.mobile-menu-item {
+  padding: 12px 16px !important;
+  border-radius: 8px !important;
+  margin: 2px 0 !important;
+  transition: all 0.2s ease !important;
+  font-weight: 500 !important;
+}
+
+.mobile-menu-item:hover {
+  background-color: #f3f4f6 !important;
+  transform: translateX(4px) !important;
+}
+
+.dark .mobile-menu-item:hover {
+  background-color: #374151 !important;
+  transform: translateX(4px) !important;
+}
+
+.mobile-menu-item-active {
+  background-color: #3b82f6 !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.mobile-menu-item-active:hover {
+  background-color: #2563eb !important;
+  color: white !important;
+}
+
 /* CARDS COM TAMANHO CONSISTENTE */
 .card-consistent {
   min-height: 280px !important;
@@ -262,6 +305,17 @@ footer {
     padding: 16px !important;
     min-height: auto !important;
   }
+
+  /* Menu mobile ocupa tela toda em dispositivos muito pequenos */
+  .mobile-menu-container {
+    position: fixed !important;
+    top: 64px !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    height: calc(100vh - 64px) !important;
+    overflow-y: auto !important;
+  }
 }
 
 /* Scroll suave para mobile */
@@ -317,4 +371,20 @@ img {
     font-size: 1.25rem;
     line-height: 1.4;
   }
+}
+
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu-container {
+  animation: slideDown 0.2s ease-out;
 }

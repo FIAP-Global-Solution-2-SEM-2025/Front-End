@@ -1,4 +1,3 @@
-// src/routes/Home.tsx
 import { Layout } from "../components/layout/Layout";
 import { Button } from "../components/ui/Button";
 import { Card, CardContent } from "../components/ui/Card";

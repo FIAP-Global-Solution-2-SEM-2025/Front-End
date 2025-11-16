@@ -1,4 +1,3 @@
-// src/components/layout/Header.tsx
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Sun, Moon } from "lucide-react";
@@ -43,7 +42,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center h-16">
 
-          {/* LOGO - Mobile mais compacto */}
+          {/* LOGO */}
           <Link 
             to="/" 
             className="flex items-center space-x-2 sm:space-x-3"
@@ -100,10 +99,10 @@ export default function Header() {
           </div>
         </div>
 
-        {/* MENU MOBILE - Melhorado */}
+        {/* MENU MOBILE - COM FUNDO SÓLIDO */}
         {open && (
-          <div className="md:hidden absolute top-16 left-0 right-0 bg-header backdrop-blur-xl border-b border-gray-200 dark:border-gray-700 shadow-lg">
-            <div className="flex flex-col py-4 space-y-1 px-4">
+          <div className="md:hidden absolute top-16 left-0 right-0 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-lg mobile-menu-container">
+            <div className="flex flex-col py-4 space-y-2 px-4">
               <MobileItem href="/" active={isActive('/')} onClick={() => setOpen(false)}>
                 Início
               </MobileItem>
@@ -118,7 +117,7 @@ export default function Header() {
               </MobileItem>
 
               {/* Login no mobile */}
-              <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-3 rounded-full hover:from-blue-700 hover:to-purple-700 transition-all mt-4 text-base">
+              <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-3 rounded-full hover:from-blue-700 hover:to-purple-700 transition-all mt-4 text-base font-medium w-full">
                 Entrar
               </button>
             </div>
@@ -161,10 +160,10 @@ function MobileItem({ href, children, active = false, onClick }: {
     <Link
       to={href}
       className={`
-        transition-all px-4 py-3 rounded-xl text-base font-medium
+        mobile-menu-item transition-all px-4 py-3 rounded-xl text-base font-medium
         ${active 
-          ? "nav-item-active" 
-          : "hover:bg-black/10 dark:hover:bg-white/10"
+          ? "mobile-menu-item-active bg-blue-600 text-white" 
+          : "text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800"
         }
       `}
       onClick={() => {

@@ -1,4 +1,3 @@
-// src/components/layout/Footer.tsx - VERSÃO CORRIGIDA
 export default function Footer() {
   return (
     <footer className="bg-card border-t mt-10">
