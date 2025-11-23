@@ -6,12 +6,14 @@ interface VagaCardProps {
   vaga: Vaga
   onCandidatar?: (vagaId: string) => void
   onVerDetalhes?: (vagaId: string) => void
+  modoEmpresa?: boolean
 }
 
 export const VagaCard = ({ 
   vaga, 
   onCandidatar,
-  onVerDetalhes 
+  onVerDetalhes,
+  modoEmpresa = false
 }: VagaCardProps) => {
   const handleCandidatar = () => {
     onCandidatar?.(vaga.id)
@@ -19,6 +21,14 @@ export const VagaCard = ({
 
   const handleVerDetalhes = () => {
     onVerDetalhes?.(vaga.id)
+  }
+
+  const handleEditar = () => {
+    console.log('Editar vaga:', vaga.id)
+  }
+
+  const handleDesativar = () => {
+    console.log('Desativar vaga:', vaga.id)
   }
 
   return (
@@ -95,7 +105,7 @@ export const VagaCard = ({
             <span>👥 15 cand.</span>
           </div>
 
-          {/* Ações - Botões lado a lado no mobile */}
+          {/* Ações - Diferentes para empresa vs candidato */}
           <div className="flex space-x-2 sm:space-x-3">
             <Button 
               variant="secondary" 
@@ -105,13 +115,35 @@ export const VagaCard = ({
             >
               Detalhes
             </Button>
-            <Button 
-              size="sm"
-              onClick={handleCandidatar}
-              className="px-4 sm:px-6 text-xs sm:text-sm bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-            >
-              Candidatar
-            </Button>
+            
+            {modoEmpresa ? (
+              <>
+                <Button 
+                  variant="secondary" 
+                  size="sm"
+                  onClick={handleEditar}
+                  className="px-3 sm:px-4 text-xs sm:text-sm"
+                >
+                  Editar
+                </Button>
+                <Button 
+                  variant="danger" 
+                  size="sm"
+                  onClick={handleDesativar}
+                  className="px-3 sm:px-4 text-xs sm:text-sm"
+                >
+                  Desativar
+                </Button>
+              </>
+            ) : (
+              <Button 
+                size="sm"
+                onClick={handleCandidatar}
+                className="px-4 sm:px-6 text-xs sm:text-sm bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+              >
+                Candidatar
+              </Button>
+            )}
           </div>
         </div>
       </CardContent>

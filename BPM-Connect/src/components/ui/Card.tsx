@@ -1,4 +1,3 @@
-// src/components/ui/Card.tsx - VERSÃO CORRIGIDA
 import { ReactNode } from 'react'
 
 interface CardProps {
