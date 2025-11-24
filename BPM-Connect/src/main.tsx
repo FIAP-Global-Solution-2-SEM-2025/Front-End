@@ -1,3 +1,4 @@
+// src/main.tsx
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -8,12 +9,13 @@ import { Processos } from "./routes/Processos.tsx";
 import "./index.css";
 import { ThemeProvider } from "./components/theme/ThemeProvider";
 import { AuthProvider } from "./Contexts/AuthContexts.tsx";
+import { SobreNos } from "./routes/SobreNos.tsx";
 import { ProtectedRoute } from "./components/secureroute/ProtectedRoute.tsx";
-import { PerfilEmpresa } from "./routes/PerfilEmpresa.tsx";
-import { PerfilCandidato } from "./routes/PerfilCandidato.tsx";
-import { DashboardEmpresa } from "./components/secureroute/DashboardEmpresa.tsx";
-import { DashboardCandidato } from "./components/secureroute/DashboardCandidato.tsx";
 import { Dashboard } from "./components/secureroute/Dashboard.tsx";
+import { DashboardCandidato } from "./components/secureroute/DashboardCandidato.tsx";
+import { PerfilCandidato } from "./routes/PerfilCandidato.tsx";
+import { PerfilEmpresa } from "./routes/PerfilEmpresa.tsx";
+import { DashboardEmpresa } from "./components/secureroute/DashboardEmpresa.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -26,6 +28,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/vagas" element={<App />} />
             <Route path="/candidatos" element={<Candidatos />} />
             <Route path="/processos" element={<Processos />} />
+            <Route path="/sobre-nos" element={<SobreNos />} /> {/* ← NOVA ROTA */}
             
             {/* Rotas Protegidas - Dashboard */}
             <Route path="/dashboard" element={
