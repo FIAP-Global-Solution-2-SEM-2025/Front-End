@@ -1,4 +1,3 @@
-// components/rh/CriarVagaModal.tsx - ATUALIZADO
 import { useState, useEffect } from 'react';
 import { X, Plus, Trash2 } from 'lucide-react';
 import { vagaService, CriarVagaData } from '../../services/vagaService';

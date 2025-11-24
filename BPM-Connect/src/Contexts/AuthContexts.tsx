@@ -36,16 +36,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
               setUsuario(usuarioAtualizado);
               localStorage.setItem('usuario', JSON.stringify(usuarioAtualizado));
             } catch (error) {
-              console.warn('Nao foi possivel atualizar dados do usuario, usando dados salvos:', error);
+              console.warn('Não foi possível atualizar dados do usuário, usando dados salvos:', error);
               setUsuario(usuarioData);
             }
           } else {
-            console.warn('Dados de usuario invalidos no localStorage');
+            console.warn('Dados de usuário inválidos no localStorage');
             localStorage.removeItem('usuario');
           }
         }
       } catch (error) {
-        console.error('Erro ao carregar usuario:', error);
+        console.error('Erro ao carregar usuário:', error);
         localStorage.removeItem('usuario');
       } finally {
         setCarregando(false);
@@ -72,7 +72,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       console.log('Resposta do login (texto):', responseText);
 
       if (!response.ok) {
-        throw new Error(responseText || 'Credenciais invalidas');
+        throw new Error(responseText || 'Credenciais inválidas');
       }
 
       let data;
@@ -80,22 +80,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         data = JSON.parse(responseText);
         console.log('Dados do login (JSON):', data);
       } catch {
-        throw new Error('Resposta invalida da API');
+        throw new Error('Resposta inválida da API');
       }
       
-      // Verificacao flexivel do login
+      // Verificação flexível do login
       const loginSucesso = data.success || data.autenticado || data.authenticated || data.sucesso;
       const usuarioId = data.id || data.usuarioId || data.userId;
 
-      console.log('Analise login:', { loginSucesso, usuarioId, data });
+      console.log('Análise login:', { loginSucesso, usuarioId, data });
 
       if (loginSucesso && usuarioId) {
-        // Busca dados do usuario
+        // Busca dados do usuário
         try {
           const userResponse = await fetch(`https://skillfast-api.onrender.com/usuarios/email/${email}`);
           if (userResponse.ok) {
             const userData = await userResponse.json();
-            console.log('Dados do usuario:', userData);
+            console.log('Dados do usuário:', userData);
             
             const usuarioCompleto = {
               id: userData.id,
@@ -110,10 +110,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             return true;
           }
         } catch (userError) {
-          console.log('Usando dados basicos:', userError);
+          console.log('Usando dados básicos:', userError);
         }
 
-        // Fallback com dados basicos
+        // Fallback com dados básicos
         const usuarioBasico = {
           id: usuarioId,
           email: email,
@@ -146,8 +146,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setCarregando(true);
       console.log('Iniciando cadastro para:', usuarioData.email);
 
-      // Pequeno delay para garantir persistencia no banco
-      console.log('Aguardando persistencia no banco...');
+      // Pequeno delay para garantir persistência no banco
+      console.log('Aguardando persistência no banco...');
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       const response = await fetch('https://skillfast-api.onrender.com/usuarios', {
@@ -163,10 +163,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         throw new Error(responseText || 'Erro ao cadastrar');
       }
 
-      console.log('Usuario cadastrado com sucesso');
+      console.log('Usuário cadastrado com sucesso');
 
-      // Aguardar mais um pouco para garantir sincronizacao
-      console.log('Aguardando sincronizacao...');
+      // Aguardar mais um pouco para garantir sincronização
+      console.log('Aguardando sincronização...');
       await new Promise(resolve => setTimeout(resolve, 500));
 
       // Tentar login com retry (3 tentativas)
@@ -190,25 +190,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
       }
 
-      // Se login automatico falhou, informar usuario
+      // Se login automático falhou, informar usuário
       if (!loginSucesso) {
-        console.warn('Cadastro realizado, mas login automatico falhou');
-        throw new Error('Cadastro realizado com sucesso! Voce ja pode fazer login manualmente.');
+        console.warn('Cadastro realizado, mas login automático falhou');
+        throw new Error('Cadastro realizado com sucesso! Você já pode fazer login manualmente.');
       }
       
       return true;
     } catch (error: any) {
       console.error('Erro no cadastro:', error);
       
-      if (error.message.includes('ja cadastrado') || error.message.includes('already exists')) {
-        throw new Error('Este email ja esta cadastrado');
-      } else if (error.message.includes('Email') && error.message.includes('invalido')) {
-        throw new Error('Por favor, insira um email valido');
+      if (error.message.includes('já cadastrado') || error.message.includes('already exists')) {
+        throw new Error('Este email já está cadastrado');
+      } else if (error.message.includes('Email') && error.message.includes('inválido')) {
+        throw new Error('Por favor, insira um email válido');
       } else if (error.message.includes('Senha') && error.message.includes('fraca')) {
         throw new Error('A senha deve ter pelo menos 6 caracteres');
       } else if (error.message.includes('Network Error') || error.message.includes('Failed to fetch')) {
-        throw new Error('Erro de conexao. Verifique sua internet.');
-      } else if (error.message.includes('Voce ja pode fazer login manualmente')) {
+        throw new Error('Erro de conexão. Verifique sua internet.');
+      } else if (error.message.includes('Você já pode fazer login manualmente')) {
         throw error;
       } else {
         throw new Error(error.message || 'Erro ao criar conta. Tente novamente.');
@@ -220,11 +220,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const atualizarUsuario = async (dados: Partial<UsuarioAuth>): Promise<void> => {
     try {
-      if (!usuario) throw new Error('Nenhum usuario logado');
+      if (!usuario) throw new Error('Nenhum usuário logado');
 
-      console.log('Atualizando dados do usuario:', dados);
+      console.log('Atualizando dados do usuário:', dados);
       
-      // Converter para o formato da API
+      // Apenas campos que existem na API - não incluir telefone, localizacao, bio
       const dadosParaAPI = {
         nome: dados.nome,
         email: dados.email
@@ -237,7 +237,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
 
       if (!response.ok) {
-        throw new Error('Erro ao atualizar usuario');
+        const errorText = await response.text();
+        throw new Error(errorText || 'Erro ao atualizar usuário');
       }
 
       const usuarioAtualizado = await response.json();
@@ -253,9 +254,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setUsuario(usuarioAuthAtualizado);
       localStorage.setItem('usuario', JSON.stringify(usuarioAuthAtualizado));
       
-      console.log('Dados do usuario atualizados com sucesso');
+      console.log('Dados do usuário atualizados com sucesso');
     } catch (error) {
-      console.error('Erro ao atualizar usuario:', error);
+      console.error('Erro ao atualizar usuário:', error);
       throw error;
     }
   };
